@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <script>
+    (function () {
+      try {
+        var savedTheme = localStorage.getItem("vf-webops-theme");
+        document.documentElement.setAttribute(
+          "data-theme",
+          savedTheme === "light" ? "light" : "dark"
+        );
+      } catch (e) {
+        document.documentElement.setAttribute("data-theme", "dark");
+      }
+    })();
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta
+    name="description"
+    content="Portfólio de Vinicius Franck — infraestrutura, automação, observabilidade, inteligência artificial e cybersecurity."
+  />
+
+  <meta name="theme-color" content="#05080E" />
+
+  <title>V//F • WEB//OPS</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon-webops.svg" />
+  <link rel="shortcut icon" href="assets/favicon-webops.svg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="styles/webops-core.css" />
+  <link rel="stylesheet" href="styles/webops-components.css" />
+  <link rel="stylesheet" href="styles/webops-motion.css" />
+</head>
+
+<body>
+  <!-- Boot -->
+  <div class="boot-screen" id="bootScreen" aria-hidden="true">
+    <div class="boot-shell">
+      <div class="boot-brand">V//F SYSTEM</div>
+      <div class="boot-line"><span>[✓]</span> infrastructure</div>
+      <div class="boot-line"><span>[✓]</span> automation</div>
+      <div class="boot-line"><span>[✓]</span> ai modules</div>
+      <div class="boot-line"><span>[✓]</span> security lab</div>
+      <div class="boot-line"><span>[✓]</span> network</div>
+      <div class="boot-ready">WEB PROTOCOL READY_</div>
+    </div>
+  </div>
+
+  <canvas id="networkCanvas" aria-hidden="true"></canvas>
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <div class="page-grid" aria-hidden="true"></div>
+
+  <header class="site-header" id="siteHeader">
+    <a class="brand" href="#home">
+      <span class="brand-v">V</span>
+      <span class="brand-slashes">//</span>
+      <span class="brand-f">F</span>
+    </a>
+
+    <nav class="main-nav" aria-label="Navegação principal" id="mainNav">
+      <a href="#sobre" data-i18n="nav.about">Sobre</a>
+      <a href="#experiencia" data-i18n="nav.experience">Experiência</a>
+      <a href="#projetos" data-i18n="nav.projects">Projetos</a>
+      <a href="#credenciais" data-i18n="nav.credentials">Credenciais</a>
+      <a href="#contato" data-i18n="nav.contact">Contato</a>
+    </nav>
+
+    <div class="header-controls">
+      <div class="language-toggle" role="group" aria-label="Selecionar idioma">
+        <button class="language-btn active" id="langPT" type="button" data-lang="pt" aria-pressed="true">PT</button>
+        <button class="language-btn" id="langEN" type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+
+      <button
+        class="theme-toggle sense-target"
+        id="themeToggle"
+        type="button"
+        aria-label="Ativar modo claro"
+        title="Alternar tema"
+      >
+        <span class="theme-toggle-track" aria-hidden="true">
+          <span class="theme-toggle-thumb">
+            <span class="theme-icon theme-icon-moon">◐</span>
+            <span class="theme-icon theme-icon-sun">☼</span>
+          </span>
+        </span>
+        <span class="theme-toggle-label" id="themeToggleLabel">DARK</span>
+      </button>
+
+      <div class="header-status">
+        <span class="pulse-dot"></span>
+        WEB//OPS ONLINE
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero section" id="home">
+      <div class="hero-copy reveal">
+        <div class="eyebrow">
+          <span class="eyebrow-index">00</span>
+          INFRASTRUCTURE / AUTOMATION / SECURITY / AI
+        </div>
+
+        <h1>
+          VINICIUS
+          <span>FRANCK</span>
+        </h1>
+
+        <h2>
+          Infrastructure Analyst
+          <span>& Automation Builder</span>
+        </h2>
+
+        <p class="hero-lead" data-i18n="hero.lead">
+          Construindo ferramentas e processos que tornam operações de TI
+          mais automatizadas, observáveis e seguras.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary sense-target" href="#projetos">
+            <span data-i18n="hero.cta">EXPLORE WORK →</span>
+          </a>
+
+          <a
+            class="btn btn-ghost sense-target"
+            href="https://github.com/Franck-686"
+            target="_blank"
+            rel="noreferrer"
+          >
+            GITHUB ↗
+          </a>
+
+          <a
+            class="btn btn-ghost sense-target"
+            href="https://www.linkedin.com/in/vinicius-franck-louren%C3%A7o-78a52917b/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            LINKEDIN ↗
+          </a>
+        </div>
+
+        <div class="hero-signature">
+          <span>NETWORK.</span>
+          <span>AUTOMATION.</span>
+          <span>INTELLIGENCE.</span>
+          <span>SECURITY.</span>
+        </div>
+      </div>
+
+      <div class="hero-system reveal">
+        <div class="system-card">
+          <div class="system-card-head">
+            <span>VF WEB CONSOLE</span>
+            <span class="console-status">CONNECTED</span>
+          </div>
+
+          <div class="console">
+            <p><span class="cmd">></span> initializing profile...</p>
+            <p><span class="label">IDENTITY</span> Vinicius Franck</p>
+            <p><span class="label">ROLE</span> Infrastructure Analyst</p>
+            <p><span class="label">ACTIVE_NODES</span> 04</p>
+
+            <div class="console-nodes">
+              <span>01 / Infrastructure</span>
+              <span>02 / Automation</span>
+              <span>03 / ForgeMindAI</span>
+              <span>04 / Cybersecurity</span>
+            </div>
+
+            <p class="console-last">
+              <span class="cmd">></span>
+              network status:
+              <span class="ok">CONNECTED</span>
+              <span class="caret"></span>
+            </p>
+          </div>
+        </div>
+
+        <div class="web-status-card">
+          <div class="web-status-title">
+            <span>WEB STATUS</span>
+            <span>LIVE</span>
+          </div>
+
+          <div class="status-row">
+            <span><i class="status-online"></i>Infrastructure</span>
+            <b>ONLINE</b>
+          </div>
+
+          <div class="status-row">
+            <span><i class="status-build"></i>Automation</span>
+            <b>BUILDING</b>
+          </div>
+
+          <div class="status-row">
+            <span><i class="status-online"></i>ForgeMindAI</span>
+            <b>ACTIVE</b>
+          </div>
+
+          <div class="status-row">
+            <span><i class="status-learning"></i>Cyber Lab</span>
+            <b>LEARNING</b>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="web-divider" aria-hidden="true">
+      <span></span><i></i><span></span><i></i><span></span>
+    </div>
+
+    <!-- SOBRE -->
+    <section class="section section-block" id="sobre">
+      <div class="section-title reveal">
+        <span class="section-code">01 // PROFILE</span>
+        <h2 data-i18n="about.title">Quem está por trás da rede.</h2>
+      </div>
+
+      <div class="about-layout reveal">
+        <div class="about-copy">
+          <p data-i18n="about.p1">
+            Profissional de Tecnologia da Informação com trajetória iniciada
+            em suporte técnico e evolução para infraestrutura corporativa.
+          </p>
+
+          <p data-i18n="about.p2">
+            Atualmente atuo com sustentação, redes, ambientes Microsoft,
+            segurança, endpoints, Active Directory e automação de processos.
+          </p>
+
+          <p data-i18n="about.p3">
+            Em paralelo, desenvolvo projetos próprios de automação e IA,
+            enquanto avanço em observabilidade e cybersecurity.
+          </p>
+        </div>
+
+        <div class="capability-panel">
+          <article>
+            <span>NODE_A</span>
+            <h3>Infrastructure</h3>
+            <p data-i18n="about.infra">Servidores, endpoints, Microsoft, AD e redes corporativas.</p>
+          </article>
+
+          <article>
+            <span>NODE_B</span>
+            <h3>Automation</h3>
+            <p data-i18n="about.automation">PowerShell, integrações, rotinas e ferramentas internas.</p>
+          </article>
+
+          <article>
+            <span>NODE_C</span>
+            <h3>Security</h3>
+            <p data-i18n="about.security">Endpoint, criptografia, cybersecurity e hardening.</p>
+          </article>
+
+          <article>
+            <span>NODE_D</span>
+            <h3>AI & Data</h3>
+            <p data-i18n="about.ai">Agentes, LLMs, análise de dados e automação inteligente.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIÊNCIA -->
+    <section class="section section-block" id="experiencia">
+      <div class="section-title reveal">
+        <span class="section-code">02 // SYSTEM EVOLUTION</span>
+        <h2 data-i18n="experience.title">Da sustentação à construção.</h2>
+      </div>
+
+      <div class="career reveal">
+        <article class="career-node">
+          <div class="career-year">2025</div>
+
+          <div class="career-rail">
+            <span class="career-dot"></span>
+          </div>
+
+          <div class="career-card">
+            <div class="career-top">
+              <span>NODE 001</span>
+              <span>FOUNDATION</span>
+            </div>
+
+            <h3 data-i18n="experience.supportRole">Técnico de Suporte Pleno</h3>
+            <p class="career-company">Quality Digital</p>
+
+            <p data-i18n="experience.supportDesc">
+              Base da minha carreira em TI, com atuação em suporte N1/N2,
+              troubleshooting, redes, estações e gestão de chamados.
+            </p>
+
+            <div class="career-tags">
+              <span>Service Desk</span>
+              <span>SLA</span>
+              <span>Networking</span>
+              <span>Users</span>
+              <span>Knowledge Base</span>
+            </div>
+          </div>
+        </article>
+
+        <div class="career-upgrade">
+          <span>UPGRADE</span>
+          <i>↓</i>
+        </div>
+
+        <article class="career-node current">
+          <div class="career-year">2026</div>
+
+          <div class="career-rail">
+            <span class="career-dot"></span>
+          </div>
+
+          <div class="career-card">
+            <div class="career-top">
+              <span>NODE 002</span>
+              <span>ACTIVE ROLE</span>
+            </div>
+
+            <h3 data-i18n="experience.infraRole">Analista de Infraestrutura</h3>
+            <p class="career-company">Pilgrims Consulting</p>
+
+            <p data-i18n="experience.infraDesc">
+              Sustentação, monitoramento e evolução do ambiente tecnológico,
+              com foco em disponibilidade, segurança e desempenho dos serviços de TI.
+            </p>
+
+            <div class="career-tags">
+              <span>Infrastructure</span>
+              <span>Microsoft</span>
+              <span>Active Directory</span>
+              <span>Networking</span>
+              <span>Security</span>
+              <span>Automation</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- PROJECT MAP -->
+    <section class="section section-block projects-section" id="projetos">
+      <div class="section-title reveal">
+        <span class="section-code">03 // SELECTED NODES</span>
+        <h2 data-i18n="projects.title">Meu ecossistema técnico.</h2>
+      </div>
+
+      <div class="project-map reveal" aria-label="Mapa dos principais projetos" id="projectMap">
+        <svg class="project-map-lines" viewBox="0 0 1000 420" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M500,210 C380,80 260,90 160,130"></path>
+          <path d="M500,210 C650,70 800,75 880,135"></path>
+          <path d="M500,210 C390,330 270,335 170,315"></path>
+          <path d="M500,210 C650,335 790,330 870,310"></path>
+        </svg>
+
+        <div class="project-hub">V//F</div>
+
+        <a href="#central" class="map-node node-a sense-target">
+          <span>01</span>
+          <strong data-i18n="projects.centralName">Central de Automação</strong>
+          <small>INFRA AUTOMATION</small>
+        </a>
+
+        <a href="#forgemind" class="map-node node-b sense-target">
+          <span>02</span>
+          <strong>ForgeMindAI</strong>
+          <small>DECISION INTELLIGENCE</small>
+        </a>
+
+        <a href="#cyberlab" class="map-node node-c sense-target">
+          <span>03</span>
+          <strong>Cyber Lab</strong>
+          <small>SECURITY JOURNEY</small>
+        </a>
+
+        <a href="#observability" class="map-node node-d sense-target">
+          <span>04</span>
+          <strong>Observability</strong>
+          <small>GRAFANA ROADMAP</small>
+        </a>
+      </div>
+
+      <!-- Central de Automação -->
+      <article class="project-showcase reveal" id="central">
+        <div class="project-visual">
+          <div class="project-screen">
+            <img
+              src="assets/central-automacao.png"
+              alt="Central de Automação de Infraestrutura" id="centralImage"
+            />
+          </div>
+
+          <div class="project-screen-label">
+            NODE 01 / LIVE PROJECT
+          </div>
+        </div>
+
+        <div class="project-copy">
+          <span class="project-kicker red">INFRASTRUCTURE AUTOMATION</span>
+
+          <h3 data-i18n="projects.centralName">Central de Automação</h3>
+
+          <p data-i18n="projects.centralDesc">
+            Plataforma desenvolvida para centralizar operações administrativas,
+            auditorias e ferramentas de infraestrutura em uma única interface.
+          </p>
+
+          <div class="module-list">
+            <div>
+              <span>01</span>
+              <strong>Active Directory</strong>
+              <small data-i18n="projects.adModule">Criação automatizada de usuários</small>
+            </div>
+
+            <div>
+              <span>02</span>
+              <strong>Network Audit</strong>
+              <small data-i18n="projects.networkAudit">Portas, serviços e acessibilidade</small>
+            </div>
+
+            <div>
+              <span>03</span>
+              <strong>UniFi Monitoring</strong>
+              <small data-i18n="projects.unifi">Clientes, APs e conectividade</small>
+            </div>
+          </div>
+
+          <div class="project-tech">
+            <span>PowerShell</span>
+            <span>Active Directory</span>
+            <span>Networking</span>
+            <span>UniFi</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Observability -->
+      <article class="observability reveal" id="observability">
+        <div>
+          <span class="project-kicker">NODE 04 / NEXT STAGE</span>
+          <h3>Automation → Observability</h3>
+          <p data-i18n="projects.observabilityDesc">
+            A próxima camada da Central de Automação será voltada à coleta de
+            métricas, visualização e alertas com Grafana.
+          </p>
+        </div>
+
+        <div class="flow-diagram">
+          <span>INFRA</span>
+          <i>→</i>
+          <span>COLLECTORS</span>
+          <i>→</i>
+          <span>METRICS</span>
+          <i>→</i>
+          <strong>GRAFANA</strong>
+          <i>→</i>
+          <div>
+            <span>DASHBOARDS</span>
+            <span>ALERTS</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- ForgeMind -->
+      <article class="project-showcase project-showcase-reverse reveal" id="forgemind">
+        <div class="project-copy">
+          <span class="project-kicker cyan">ENTERPRISE DECISION INTELLIGENCE</span>
+
+          <h3>ForgeMindAI</h3>
+
+          <p data-i18n="projects.forgeDesc">
+            Plataforma de inteligência aplicada a dados empresariais,
+            criada para transformar planilhas, relatórios e documentos
+            em análises estruturadas para diferentes perspectivas de decisão.
+          </p>
+
+          <div class="agent-grid">
+            <span>Executive Board</span>
+            <span>Data Governance</span>
+            <span>Risk Assessment</span>
+            <span>BI Intelligence</span>
+            <span>Executive Dashboard</span>
+            <span>Full Analysis</span>
+          </div>
+
+          <div class="project-tech">
+            <span>AI</span>
+            <span>LLMs</span>
+            <span>Python</span>
+            <span>Agents</span>
+            <span>Data Analysis</span>
+          </div>
+        </div>
+
+        <div class="project-visual">
+          <div class="project-screen">
+            <img
+              src="assets/forgemind-ai.png"
+              alt="Interface do ForgeMindAI" id="forgeImage"
+            />
+          </div>
+
+          <div class="project-screen-label cyan-label">
+            NODE 02 / AI PROJECT
+          </div>
+        </div>
+      </article>
+
+      <!-- Cyber Lab -->
+      <article class="cyber-lab reveal" id="cyberlab">
+        <div class="cyber-copy">
+          <span class="project-kicker purple">NODE 03 / CYBERSECURITY LAB</span>
+
+          <h3>Kali Linux & Security Journey</h3>
+
+          <p data-i18n="projects.cyberDesc">
+            Laboratório pessoal voltado ao desenvolvimento prático em
+            cybersecurity, redes, análise de vulnerabilidades e fundamentos
+            de segurança ofensiva em ambientes controlados.
+          </p>
+
+          <div class="project-tech">
+            <span>Kali Linux</span>
+            <span>Networking</span>
+            <span>Cybersecurity</span>
+            <span>Ethical Hacking</span>
+          </div>
+        </div>
+
+        <div class="cyber-progress">
+          <div class="progress-item done">
+            <span>✓</span>
+            <div>
+              <strong>Introduction to Cybersecurity</strong>
+              <small>Cisco Networking Academy</small>
+            </div>
+            <b>COMPLETE</b>
+          </div>
+
+          <div class="progress-item done">
+            <span>✓</span>
+            <div>
+              <strong>Networking Basics</strong>
+              <small>Cisco Networking Academy</small>
+            </div>
+            <b>COMPLETE</b>
+          </div>
+
+          <div class="progress-item active">
+            <span>●</span>
+            <div>
+              <strong>Do 0 ao Kali Linux</strong>
+              <small>Udemy / Ethical Hacker</small>
+            </div>
+            <b>ACTIVE</b>
+          </div>
+
+          <div class="progress-item">
+            <span>○</span>
+            <div>
+              <strong>Network Enumeration</strong>
+              <small data-i18n="common.nextStep">Next step</small>
+            </div>
+            <b>QUEUED</b>
+          </div>
+
+          <div class="progress-item">
+            <span>○</span>
+            <div>
+              <strong>Vulnerability Analysis</strong>
+              <small data-i18n="common.nextStep">Next step</small>
+            </div>
+            <b>QUEUED</b>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- INFRA CASES -->
+    <section class="section section-block">
+      <div class="section-title reveal">
+        <span class="section-code">04 // FIELD CASES</span>
+        <h2 data-i18n="cases.title">Infraestrutura aplicada.</h2>
+      </div>
+
+      <div class="case-grid reveal">
+        <article>
+          <span>CASE_01</span>
+          <h3 data-i18n="cases.orgTitle">Organograma Corporativo</h3>
+          <p data-i18n="cases.orgDesc">
+            Automação da hierarquia entre Active Directory,
+            gestores e Microsoft 365.
+          </p>
+          <small>PowerShell / AD / Microsoft 365</small>
+        </article>
+
+        <article>
+          <span>CASE_02</span>
+          <h3>Endpoint Security & Encryption</h3>
+          <p data-i18n="cases.endpointDesc">
+            Implantação, operação e troubleshooting de
+            criptografia e endpoint security.
+          </p>
+          <small>ESET Protect / EFDE / Windows</small>
+        </article>
+
+        <article>
+          <span>CASE_03</span>
+          <h3 data-i18n="cases.networkTitle">Rede Matriz / Filial</h3>
+          <p data-i18n="cases.networkDesc">
+            Conectividade, VPN, IPsec e políticas de comunicação
+            entre ambientes corporativos.
+          </p>
+          <small>Mikrotik / VPN / IPsec</small>
+        </article>
+
+        <article>
+          <span>CASE_04</span>
+          <h3 data-i18n="cases.provisioningTitle">Provisionamento de Notebooks</h3>
+          <p data-i18n="cases.provisioningDesc">
+            Padronização e automação do processo de preparação
+            de novos equipamentos.
+          </p>
+          <small>Windows / PowerShell / AD</small>
+        </article>
+      </div>
+    </section>
+
+    <!-- CREDENTIALS -->
+    <section class="section section-block" id="credenciais">
+      <div class="section-title reveal">
+        <span class="section-code">05 // CREDENTIALS</span>
+        <h2>Skill unlocks.</h2>
+      </div>
+
+      <div class="credential-grid reveal">
+        <article class="credential-card">
+          <div class="credential-top">
+            <span>CISCO</span>
+            <span>2026.08</span>
+          </div>
+          <h3>Introduction to Cybersecurity</h3>
+          <p data-i18n="credentials.cyberDesc">Cybersecurity, ameaças, vulnerabilidades e princípios de defesa.</p>
+          <div class="credential-status">● VERIFIED</div>
+        </article>
+
+        <article class="credential-card">
+          <div class="credential-top">
+            <span>GLOBAL AI COMMUNITY</span>
+            <span>2026.07</span>
+          </div>
+          <h3>Agents League — Enterprise Agents</h3>
+          <p data-i18n="credentials.agentsDesc">Agentes corporativos, inteligência artificial e automação.</p>
+          <div class="credential-status">● VERIFIED</div>
+        </article>
+
+        <article class="credential-card">
+          <div class="credential-top">
+            <span>MICROSOFT</span>
+            <span>2026.06</span>
+          </div>
+          <h3>AI Skills Fest 2026</h3>
+          <p data-i18n="credentials.microsoftDesc">Inteligência artificial e automação no ecossistema Microsoft.</p>
+          <div class="credential-status">● VERIFIED</div>
+        </article>
+
+        <article class="credential-card">
+          <div class="credential-top">
+            <span>CISCO</span>
+            <span>2026.06</span>
+          </div>
+          <h3>Networking Basics</h3>
+          <p data-i18n="credentials.networkingDesc">Protocolos, redes, componentes e conectividade.</p>
+          <div class="credential-status">● VERIFIED</div>
+        </article>
+
+        <article class="credential-card">
+          <div class="credential-top">
+            <span>SANTANDER OPEN ACADEMY</span>
+            <span>2026.06</span>
+          </div>
+          <h3>Prompting Responsável</h3>
+          <p data-i18n="credentials.promptDesc">IA responsável, prompting e aplicações estratégicas.</p>
+          <div class="credential-status">● VERIFIED</div>
+        </article>
+
+        <article class="credential-card learning">
+          <div class="credential-top">
+            <span>UDEMY</span>
+            <span>ACTIVE</span>
+          </div>
+          <h3>Do 0 ao Kali Linux</h3>
+          <p data-i18n="credentials.udemyDesc">Cybersecurity, ethical hacking, redes e laboratório prático.</p>
+          <div class="credential-status learning-status">● LEARNING</div>
+        </article>
+      </div>
+    </section>
+
+    <!-- STACK -->
+    <section class="section section-block">
+      <div class="section-title reveal">
+        <span class="section-code">06 // STACK</span>
+        <h2 data-i18n="stack.title">Ferramentas do sistema.</h2>
+      </div>
+
+      <div class="stack-matrix reveal">
+        <article>
+          <span>01</span>
+          <h3>Microsoft</h3>
+          <p>Microsoft 365 / Entra ID / Active Directory / Windows</p>
+        </article>
+
+        <article>
+          <span>02</span>
+          <h3>Automation</h3>
+          <p>PowerShell / scripting / integrations / process automation</p>
+        </article>
+
+        <article>
+          <span>03</span>
+          <h3>Networking</h3>
+          <p>TCP/IP / DNS / DHCP / VPN / IPsec / Mikrotik / UniFi</p>
+        </article>
+
+        <article>
+          <span>04</span>
+          <h3>Security</h3>
+          <p>ESET / Encryption / Kali Linux / Cybersecurity</p>
+        </article>
+
+        <article>
+          <span>05</span>
+          <h3>Observability</h3>
+          <p>Grafana / metrics / dashboards / monitoring / alerts</p>
+        </article>
+
+        <article>
+          <span>06</span>
+          <h3>AI & Data</h3>
+          <p>ForgeMindAI / Python / APIs / LLMs / Agents / Analytics</p>
+        </article>
+
+        <article>
+          <span>07</span>
+          <h3>ITSM</h3>
+          <p>GLPI / assets / tickets / processes / documentation</p>
+        </article>
+
+        <article>
+          <span>08</span>
+          <h3>Platforms</h3>
+          <p>GitHub / Linux / Windows / troubleshooting</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section contact-section" id="contato">
+      <div class="contact-shell reveal">
+        <span class="section-code">07 // CONTACT NODE</span>
+
+        <h2 data-i18n-html="contact.title">
+          Vamos conectar
+          <span>os pontos?</span>
+        </h2>
+
+        <p data-i18n="contact.desc">
+          Infraestrutura, automação, observabilidade,
+          cybersecurity, IA ou projetos de tecnologia.
+        </p>
+
+        <div class="contact-actions">
+          <a class="btn btn-primary sense-target" href="mailto:vinicius.franckit@gmail.com">
+            <span data-i18n="contact.email">EMAIL →</span>
+          </a>
+
+          <a
+            class="btn btn-ghost sense-target"
+            href="https://www.linkedin.com/in/vinicius-franck-louren%C3%A7o-78a52917b/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            LINKEDIN ↗
+          </a>
+
+          <a
+            class="btn btn-ghost sense-target"
+            href="https://github.com/Franck-686"
+            target="_blank"
+            rel="noreferrer"
+          >
+            GITHUB ↗
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>
+      <strong>V//F</strong>
+      <span>WEB//OPS DESIGN SYSTEM</span>
+    </div>
+
+    <div>
+      <span>NETWORK.</span>
+      <span>AUTOMATION.</span>
+      <span>INTELLIGENCE.</span>
+      <span>SECURITY.</span>
+    </div>
+
+    <div>
+      © <span id="year"></span> Vinicius Franck
+    </div>
+  </footer>
+
+  <div class="sense-pulse" id="sensePulse" aria-hidden="true">
+    <i></i><i></i><i></i>
+  </div>
+
+  <div class="easter-egg" id="easterEgg" aria-hidden="true">
+    WEB-SLING MODE ENABLED
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

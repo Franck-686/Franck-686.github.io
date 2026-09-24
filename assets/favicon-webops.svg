@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="14" fill="#05080E"/>
+
+  <g fill="none" stroke="#DCEBFF" stroke-width="2" stroke-linecap="round" opacity="0.95">
+    <!-- linhas principais -->
+    <line x1="32" y1="10" x2="32" y2="54"/>
+    <line x1="10" y1="32" x2="54" y2="32"/>
+    <line x1="16" y1="16" x2="48" y2="48"/>
+    <line x1="48" y1="16" x2="16" y2="48"/>
+
+    <!-- linhas diagonais extras -->
+    <line x1="22" y1="12" x2="42" y2="52"/>
+    <line x1="42" y1="12" x2="22" y2="52"/>
+    <line x1="12" y1="22" x2="52" y2="42"/>
+    <line x1="12" y1="42" x2="52" y2="22"/>
+
+    <!-- arcos superiores -->
+    <path d="M20 20 Q32 14 44 20"/>
+    <path d="M15 15 Q32 7 49 15"/>
+
+    <!-- arcos laterais -->
+    <path d="M20 20 Q14 32 20 44"/>
+    <path d="M15 15 Q7 32 15 49"/>
+
+    <path d="M44 20 Q50 32 44 44"/>
+    <path d="M49 15 Q57 32 49 49"/>
+
+    <!-- arcos inferiores -->
+    <path d="M20 44 Q32 50 44 44"/>
+    <path d="M15 49 Q32 57 49 49"/>
+  </g>
+
+  <!-- centro -->
+  <circle cx="32" cy="32" r="3" fill="#E53945"/>
+</svg>

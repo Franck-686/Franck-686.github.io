@@ -1,0 +1,91 @@
+
+/* BOOT */
+
+.boot-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 5000;
+  display: grid;
+  place-items: center;
+  background: #03060a;
+  transition: opacity .45s ease, visibility .45s ease;
+}
+
+.boot-screen.hide {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.boot-shell {
+  width: min(420px, calc(100% - 40px));
+  padding: 24px;
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 14px;
+  background: rgba(8,13,21,.85);
+  box-shadow: 0 30px 70px rgba(0,0,0,.4);
+  font-family: "JetBrains Mono", monospace;
+}
+
+.boot-brand {
+  margin-bottom: 20px;
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: .08em;
+}
+
+.boot-line {
+  margin: 7px 0;
+  color: #8392a6;
+  font-size: .72rem;
+}
+
+.boot-line span {
+  color: #66e0a3;
+}
+
+.boot-ready {
+  margin-top: 18px;
+  color: #62e8ff;
+  font-size: .72rem;
+  letter-spacing: .06em;
+}
+
+/* REVEAL */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .65s ease, transform .65s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes caretBlink {
+  50% { opacity: 0; }
+}
+
+@keyframes sensePulse {
+  0% {
+    opacity: .55;
+    transform: scale(.3);
+  }
+  70% {
+    opacity: .08;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.7);
+  }
+}
+
+body.web-sling .project-map-lines path {
+  stroke: rgba(229,57,69,.36);
+  stroke-dasharray: 2 5;
+}
+
+body.web-sling #networkCanvas {
+  opacity: .95;
+}
